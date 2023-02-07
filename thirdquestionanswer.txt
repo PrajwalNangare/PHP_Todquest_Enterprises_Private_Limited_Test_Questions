@@ -1,0 +1,33 @@
+<?php
+
+	
+function crawl_page1($url) {
+
+	$dom = new DOMDocument('1.0');
+	
+	
+	@$dom->loadHTMLFile($url);
+	
+	$anchors = $dom -> getElementsByTagName('img');
+	
+	
+	foreach ($anchors as $element) {
+		
+		
+		$src = $element -> getAttribute('src');
+		
+	
+		$alt = $element -> getAttribute('alt');
+		
+		
+		$height = $element -> getAttribute('height');
+		
+		
+		$width = $element -> getAttribute('width');
+		
+		echo '<img src="'.$src.'" alt="'.$alt.'" height="'
+				. $height.'" width="'.$width.'"/>';
+	}
+}
+crawl_page1("https://cdn.dribbble.com/users/1323931/screenshots/3208777/login_page.png");
+?>

@@ -1,0 +1,31 @@
+<?php
+function pre_r($array)
+{
+    echo '<pre>';
+    print_r($array);
+    echo '</pre>';
+}
+$local_dir = 'E:\INT222MongodbRelatedPracticeCodes';
+$files = scandir($local_dir);
+$files = array_diff($files,array('.','..'));
+$files = array_values($files);
+$files = array();
+$files = array_values(array_diff(scandir($local_dir), array('.'','..')));
+function clean_scandir($dir)
+{
+   return array_values(array_diff(scandir($dir), array('.'','..')));
+}
+$files = array();
+if($handle = opendir($local_dir))
+{
+   while(false !== ($file = readdir($handle)))
+   {
+         if($file != '.' && $file != '..')
+         {
+                  $files[] = $file;
+         }
+   }
+   closedir($handle);
+}
+pre_r(clean_readdir($local_dir));
+?>  
